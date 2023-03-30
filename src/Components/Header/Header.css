@@ -1,0 +1,15 @@
+.header{
+    height: 80px;
+ padding-left: 200px;
+ padding-right: 200px;
+   align-items: center;
+   display: flex;
+justify-content: space-between;
+ 
+}
+.nav-img img{
+    height: 50px;
+    width: 50px;
+    margin-top: 20px;
+   
+}
