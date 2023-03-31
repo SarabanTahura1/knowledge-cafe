@@ -25,39 +25,52 @@ const Blogs = () => {
       setReadTime(time);
     }
   };
+  const [bookMarkDb , setBookMarkDb] =useState([])
   const handleBookMark = (id, title) => {
     const previousBookMarkData = JSON.parse(localStorage.getItem("Bookmark"));
     const bookMarkArray = [];
     const bookMarkData = { id, title };
     if (previousBookMarkData) {
+      const isBookMark = previousBookMarkData?.find((pd) => pd.id == id);
       
+  if (isBookMark) {
+        bookMarkArray.push(...previousBookMarkData, bookMarkData);
+    
+      localStorage.setItem("Bookmark", JSON.stringify(bookMarkArray));
+        setBookMarkDb(bookMarkArray);
+      } else {
+        bookMarkArray.push(...previousBookMarkData, bookMarkData);
+        localStorage.setItem("Bookmark", JSON.stringify(bookMarkArray));
+        setBookMarkDb(bookMarkArray);
+      }
     } else {
       bookMarkArray.push(bookMarkData);
       localStorage.setItem("Bookmark", JSON.stringify(bookMarkArray));
+      setBookMarkDb(bookMarkArray);
     }
   };
 
   return (
     <div>
-    <div className="blogs-parent">
-      <div className="blogs-container">
-        {blogs?.map((blog) => (
-          <Blog
-            handleReadTime={handleReadTime}
-            blog={blog}
-            key={blog.id}
-            handleBookMark={handleBookMark}
-          ></Blog>
-        ))}
+      <div className="blogs-parent">
+        <div className="blogs-container">
+          {blogs?.map((blog) => (
+            <Blog
+              handleReadTime={handleReadTime}
+              blog={blog}
+              key={blog.id}
+              handleBookMark={handleBookMark}
+            ></Blog>
+          ))}
+        </div>
+        <div className="blog-count">
+          <Calculate readTime={readTime}
+          bookMarkDb={bookMarkDb}></Calculate>
+        </div>
       </div>
-      <div className="blog-count">
-        <Calculate readTime={readTime}></Calculate>
+      <div>
+        <QuestionAnswer></QuestionAnswer>
       </div>
-     
-    </div>
-    <div>
-      <QuestionAnswer></QuestionAnswer>
-    </div>
     </div>
   );
 };
