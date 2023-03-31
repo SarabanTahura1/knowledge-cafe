@@ -1,0 +1,28 @@
+.blogs-parent {
+    display: flex;
+}
+
+.spent-time {
+    border: 1px solid indianred;
+    padding: 10px;
+    margin-right: 20px;
+    background-color: rgb(243, 234, 231);
+    margin-top: 30px;
+    text-align: center;
+}
+
+.bookmark-container {
+    margin-top: 30px;
+    border: 1px solid indianred;
+    background-color: rgb(243, 234, 231);
+    text-align: center;
+    margin-right: 20px;
+}
+@media only screen and (max-width:576px) {
+    .blogs-parent {
+        display: flex;
+
+        flex-direction: column;
+    }   
+
+}
