@@ -21,7 +21,7 @@ const Blog = ({blog ,handleReadTime ,handleBookMark}) => {
                     </div>
                     <div className="read-time">
                         <small>{blog.readTime}min read</small>
-                        <button onClick={()=>handleBookMark(blog.id, blog.title)}>Bookmark</button>
+                        <img src='bookmark.svg' onClick={()=>handleBookMark(blog.id, blog.title)}/>
 
                     </div>
 

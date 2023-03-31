@@ -23,7 +23,7 @@ const Calculate = ({ readTime, bookMarkDb }) => {
         <h3> Bookmarked Blogs :{bookMarkTitle?.length || 0} </h3>
        {
         bookMarkTitle?.map(bk =>
-            <h3>{bk?.title}</h3> 
+            <h3 className="bk-title">{bk?.title}</h3> 
             )
        }
       </div>
