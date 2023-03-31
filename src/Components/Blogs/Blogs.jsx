@@ -53,7 +53,7 @@ const Blogs = () => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <div className="blogs-parent">
         <div className="blogs-container">
           {blogs?.map((blog) => (
@@ -69,10 +69,10 @@ const Blogs = () => {
           <Calculate readTime={readTime} bookMarkDb={bookMarkDb}></Calculate>
         </div>
       </div>
-      <div>
+      
         <QuestionAnswer></QuestionAnswer>
-      </div>
-    </div>
+      
+    </React.Fragment>
   );
 };
 
