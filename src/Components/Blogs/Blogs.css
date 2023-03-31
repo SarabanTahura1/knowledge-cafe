@@ -20,9 +20,8 @@
 }
 @media only screen and (max-width:576px) {
     .blogs-parent {
-        display: flex;
-
-        flex-direction: column;
+    
+ flex-direction: column;
     }   
 
 }

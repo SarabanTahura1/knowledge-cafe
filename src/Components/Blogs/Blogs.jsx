@@ -25,19 +25,21 @@ const Blogs = () => {
       setReadTime(time);
     }
   };
-  const [bookMarkDb , setBookMarkDb] =useState([])
+  const [bookMarkDb, setBookMarkDb] = useState([]);
   const handleBookMark = (id, title) => {
     const previousBookMarkData = JSON.parse(localStorage.getItem("Bookmark"));
     const bookMarkArray = [];
     const bookMarkData = { id, title };
     if (previousBookMarkData) {
       const isBookMark = previousBookMarkData?.find((pd) => pd.id == id);
-      
-  if (isBookMark) {
+
+      if (isBookMark) {
         bookMarkArray.push(...previousBookMarkData, bookMarkData);
-    
-      localStorage.setItem("Bookmark", JSON.stringify(bookMarkArray));
+
+        localStorage.setItem("Bookmark", JSON.stringify(bookMarkArray));
+
         setBookMarkDb(bookMarkArray);
+        swal("Sorry!", "You Have Already Bookmarked This Blog", "info")
       } else {
         bookMarkArray.push(...previousBookMarkData, bookMarkData);
         localStorage.setItem("Bookmark", JSON.stringify(bookMarkArray));
@@ -64,8 +66,7 @@ const Blogs = () => {
           ))}
         </div>
         <div className="blog-count">
-          <Calculate readTime={readTime}
-          bookMarkDb={bookMarkDb}></Calculate>
+          <Calculate readTime={readTime} bookMarkDb={bookMarkDb}></Calculate>
         </div>
       </div>
       <div>
