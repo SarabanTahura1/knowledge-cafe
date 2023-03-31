@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Blog.css"
+
 const Blog = ({blog ,handleReadTime ,handleBookMark}) => {
     // const { name, BCimage, Aimage, title, readTime, date } = props.blog;
 

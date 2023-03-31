@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Blogs.css";
 import Blog from "../Blog/Blog";
 import Calculate from "../Calculate/Calculate";
+import QuestionAnswer from "../QuestionAnswer/QuestionAnswer";
 
 const Blogs = () => {
-
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -25,11 +25,20 @@ const Blogs = () => {
       setReadTime(time);
     }
   };
-  const handleBookMark=(id ,title)=>{
-    console.log(id , title)
-  }
+  const handleBookMark = (id, title) => {
+    const previousBookMarkData = JSON.parse(localStorage.getItem("Bookmark"));
+    const bookMarkArray = [];
+    const bookMarkData = { id, title };
+    if (previousBookMarkData) {
+      
+    } else {
+      bookMarkArray.push(bookMarkData);
+      localStorage.setItem("Bookmark", JSON.stringify(bookMarkArray));
+    }
+  };
 
   return (
+    <div>
     <div className="blogs-parent">
       <div className="blogs-container">
         {blogs?.map((blog) => (
@@ -44,6 +53,11 @@ const Blogs = () => {
       <div className="blog-count">
         <Calculate readTime={readTime}></Calculate>
       </div>
+     
+    </div>
+    <div>
+      <QuestionAnswer></QuestionAnswer>
+    </div>
     </div>
   );
 };
